@@ -1,0 +1,836 @@
+    /* ==========================================================================
+    VIDACAO — ESTILOS PRINCIPALES (Dark Botanical Edition)
+    ========================================================================== */
+
+    /* --- 1. VARIABLES Y RESET DE SISTEMA --- */
+    :root {
+    --bg-color: #0b100d;
+    --card-bg: #111713;
+    --text-primary: #f2f5f1;   /* Blanco vegetal de alto contraste */
+    --text-secondary: #b0b9ac; /* Tono atenuado legible */
+    --accent-gold: #d4af37;    /* Oro Botánico */
+    --accent-gold-light: #f3e5ab;
+    --border-line: rgba(212, 175, 55, 0.25);
+    --font-title: 'Cormorant Garamond', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --font-btn: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    /* Ocultar cursor nativo en pantallas de escritorio */
+    @media (min-width: 992px) {
+    body, a, button, input, textarea, select {
+        cursor: none !important;
+    }
+    }
+
+    body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem; /* 16px base para legibilidad óptima */
+    line-height: 1.65;
+    overflow-x: hidden;
+    position: relative;
+    }
+
+    p, li, label, span {
+    letter-spacing: 0.02em;
+    }
+
+    /* Utilitarios */
+    .mt-2 { margin-top: 0.5rem; }
+    .w-100 { width: 100%; }
+    .text-muted { color: var(--text-secondary) !important; font-size: 0.85rem; }
+
+    /* --- 2. CURSOR PERSONALIZADO & SEMILLA DE CACAO --- */
+    #cursor-seed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out, filter 0.3s ease;
+    filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
+    }
+
+    #cursor-seed svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    }
+
+    #cursor-seed.active {
+    transform: translate(-50%, -50%) scale(1.35);
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.9));
+    }
+
+    .choco-drop {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    animation: dropFade 0.65s forwards ease-out;
+    }
+    .img-placeholder {
+        background: #141d18;
+        border: 1px dashed rgba(212, 175, 55, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.8rem;
+        padding: 1rem;
+        }
+
+    .hero-img { width: 100%; height: 520px; }
+    .story-img { width: 100%; height: 480px; }
+    .product-img { width: 100%; height: 350px; }
+
+    @keyframes dropFade {
+    0% {
+        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 18px) scale(0.15);
+    }
+    }
+
+    /* --- 3. ANIMACIONES SCROLL (REVEAL) --- */
+    .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+    }
+
+    /* --- 4. NAVEGACIÓN PRINCIPAL --- */
+    .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 5%;
+    background: rgba(11, 16, 13, 0.4);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-line);
+    z-index: 100;
+    }
+
+    .brand-logo {
+    font-family: var(--font-title);
+    font-size: 1.9rem;
+    letter-spacing: 0.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    }
+
+    .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.12rem;
+    text-transform: uppercase;
+    transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--accent-gold); }
+
+    .nav-actions { display: flex; gap: 1rem; align-items: center; }
+
+    .asmr-toggle, .cart-trigger {
+    background: transparent;
+    border: 1px solid var(--border-line);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    transition: all 0.3s;
+    }
+
+    .asmr-toggle.active {
+    border-color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.18);
+    color: var(--accent-gold);
+    }
+
+    /* --- 5. SECCIÓN HERO --- */
+    .hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh; /* Soporte para alto dinámico en navegadores móviles */
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 5% 5rem;
+    overflow: hidden;
+    z-index: 2;
+
+  padding: 0 5% 4rem;
+  overflow: hidden;
+  z-index: 2;
+    }
+
+    .hero-bg-wrapper {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 1;
+    }
+
+    .hero-full-bg {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0; left: 0;
+    }
+
+    .hero-overlay-gradient {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(11, 16, 13, 0.9) 0%,
+        rgba(11, 16, 13, 0.5) 50%,
+        rgba(11, 16, 13, 0.2) 100%
+    );
+    pointer-events: none;
+    }
+
+    .hero-content-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: 8rem;
+    }
+
+    .hero-text-block { max-width: 580px; }
+
+    .main-title {
+    font-family: var(--font-title);
+    font-size: 4.5rem;
+    line-height: 1.05;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-description {
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    }
+
+    .hero-editorial-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border-right: 2px solid var(--accent-gold);
+    padding-right: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+    }
+
+    .badge-number {
+    font-family: var(--font-title);
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    }
+
+    /* --- 6. CATÁLOGOS Y FILTROS --- */
+    .products-section {
+    padding: 7rem 5%;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--border-line);
+    }
+
+    .section-title {
+    font-family: var(--font-title);
+    font-size: 3.2rem;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    }
+
+    .catalog-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    }
+
+    .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border-line);
+    color: var(--text-secondary);
+    padding: 0.6rem 1.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.1);
+    }
+
+    .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    }
+
+    .product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-line);
+    padding: 1.5rem;
+    transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .product-card:hover {
+    border-color: var(--accent-gold);
+    transform: translateY(-4px);
+    }
+
+    .product-info { margin-top: 1.5rem; }
+    .product-info h3 { font-family: var(--font-title); font-size: 1.8rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .product-desc { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1.2rem; }
+    .product-price { display: block; font-size: 1.25rem; font-weight: 600; color: var(--accent-gold); margin-bottom: 1.5rem; }
+
+    .btn-add {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border-line);
+    color: var(--text-primary);
+    padding: 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    }
+
+    .btn-add:hover {
+    border-color: var(--accent-gold);
+    background: var(--accent-gold);
+    color: #0b100d;
+    }
+
+    /* --- 7. RITUAL DE DEGUSTACIÓN --- */
+
+    .step-num {
+    font-family: var(--font-title);
+    font-size: 2.8rem;
+    color: var(--accent-gold);
+    display: block;
+    margin-bottom: 0.5rem;
+    }
+    /* --- RITUAL CON VIDEO DE FONDO Y DESENFOQUE (BLUR) --- */
+    .ritual-section {
+    position: relative;
+    padding: 8rem 5%;
+    overflow: hidden;
+    border-top: 1px solid var(--border-line);
+    border-bottom: 1px solid var(--border-line);
+    }
+
+    .ritual-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    }
+
+    .ritual-video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(6px) scale(1.08) brightness(0.45) contrast(1.1); /* Efecto difuso + oscurecido */
+    }
+
+    .ritual-overlay-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle,
+        rgba(11, 16, 13, 0.6) 0%,
+        rgba(11, 16, 13, 0.9) 100%
+    );
+    pointer-events: none;
+    }
+
+    .ritual-content-container {
+    position: relative;
+    z-index: 2;
+    }
+
+    /* Tarjetas del ritual flotantes */
+    .ritual-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    }
+
+    .ritual-step {
+    border-left: 2px solid var(--accent-gold);
+    padding-left: 1.5rem;
+    background: rgba(11, 16, 13, 0.45);
+    backdrop-filter: blur(4px);
+    padding: 1.5rem 1.2rem;
+    border-radius: 0 4px 4px 0;
+    transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .ritual-step:hover {
+    transform: translateY(-4px);
+    background: rgba(17, 23, 19, 0.75);
+    }
+
+    .ritual-step h3 { font-family: var(--font-title); font-size: 1.6rem; margin-bottom: 0.8rem; }
+    .ritual-step p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+
+    /* --- 8. FORMULARIO CORPORATIVO Y BOTÓN DE ACCIÓN DE LUJO --- */
+    .corporate-section {
+    padding: 7rem 5%;
+    position: relative;
+    z-index: 2;
+    border-top: 1px solid var(--border-line);
+    }
+
+    .corporate-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+    align-items: stretch; /* Fuerza a ambas columnas a tener exactamente la misma altura */
+    }
+    .corporate-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    }
+    .corporate-text h2 { font-family: var(--font-title); font-size: 3rem; font-weight: 300; margin: 1rem 0; }
+    .corporate-text p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; }
+
+    .corporate-form {
+    background: var(--card-bg);
+    border: 1px solid var(--border-line);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column; /* Organiza el formulario verticalmente */
+    height: 100%; /* Ocupa todo el alto de la columna */
+    }
+
+    .corporate-form h3 {
+    font-family: var(--font-title);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    }
+
+    /* El botón se empuja automáticamente al fondo del formulario */
+    .corporate-form .btn-corporate {
+    margin-top: auto !important; 
+    }
+
+    .corporate-form input, .corporate-form textarea, .input-address {
+    width: 100%;
+    background: #080c09;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    color: #ffffff;
+    padding: 0.9rem 1rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    border-radius: 4px;
+    }
+
+    .corporate-form input:focus, .corporate-form textarea:focus, .input-address:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    }
+
+    /* BOTÓN SOLICITUD CORPORATIVA (REDISEÑADO CON ALTO CONTRASTE) */
+    .btn-corporate {
+    position: relative;
+    width: 100% !important;
+    padding: 1.1rem 2rem !important;
+    background: linear-gradient(135deg, #e5c158 0%, #d4af37 100%) !important;
+    color: #080c09 !important; /* Texto oscuro de alto contraste */
+    border: 1px solid #fff5cb !important;
+    border-radius: 4px !important;
+    font-family: var(--font-btn) !important;
+    font-size: 1rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    cursor: pointer !important;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6) !important;
+    transition: all 0.3s ease !important;
+    }
+
+    .btn-corporate:hover {
+    background: #ffffff !important;
+    color: #000000 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* --- 9. STORY SECTION --- */
+    .story-section { padding: 7rem 5%; position: relative; z-index: 2; border-top: 1px solid var(--border-line); }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .story-text h2 { font-family: var(--font-title); font-size: 3rem; margin-bottom: 1.5rem; }
+    .story-text p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; }
+
+    /* --- 10. CARRITO DE COMPRAS & MÓDULO LOGÍSTICO --- */
+    .cart-drawer {
+    position: fixed;
+    top: 0; right: -440px;
+    width: 420px; height: 100vh;
+    background: #0d130f;
+    border-left: 1px solid var(--border-line);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s ease;
+    padding: 2rem;
+    }
+
+    .cart-drawer.active { right: 0; }
+
+    .cart-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-line);
+    padding-bottom: 1rem;
+    }
+
+    .cart-header h3 { font-family: var(--font-title); font-size: 1.7rem; color: #fff; }
+    .cart-close { background: none; border: none; color: white; font-size: 1.4rem; cursor: pointer; }
+
+    .cart-items { flex-grow: 1; overflow-y: auto; padding: 1rem 0; }
+
+    .checkout-delivery, .cart-gift {
+    border-top: 1px dashed rgba(212, 175, 55, 0.3);
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    }
+
+    .checkout-delivery h4 {
+    color: var(--accent-gold);
+    font-family: var(--font-title);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    }
+
+    .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+    }
+
+    .radio-label {
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    }
+
+    .location-box {
+    background: rgba(11, 16, 13, 0.7);
+    padding: 1rem;
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 4px;
+    }
+
+    .btn-gps {
+    width: 100%;
+    padding: 0.85rem;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid var(--accent-gold);
+    color: var(--accent-gold);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    }
+
+    .btn-gps:hover {
+    background: rgba(212, 175, 55, 0.25);
+    }
+
+    /* PREDICT DE DIRECCIONES */
+    .predict-dropdown {
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: #121915;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    max-height: 180px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    }
+
+    .predict-item {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.85rem;
+    color: #d1d8cd;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s, color 0.2s;
+    }
+
+    .predict-item:hover {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--accent-gold);
+    }
+
+    /* DESGLOSE DE TOTALES EN CARRITO */
+    .cart-totals-breakdown .flex-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-primary);
+    }
+
+    .cart-totals-breakdown .total-row {
+    margin-top: 0.5rem;
+    border-top: 1px solid var(--border-line);
+    padding-top: 0.5rem;
+    color: var(--accent-gold-light);
+    font-family: var(--font-title);
+    font-size: 1.35rem;
+    font-weight: 700;
+    }
+
+    /* BOTÓN CONFIRMAR PEDIDO VÍA WHATSAPP (REDISEÑADO CON ALTO CONTRASTE) */
+    .cart-footer .btn-primary {
+    width: 100% !important;
+    margin-top: 1rem !important;
+    padding: 1.1rem 1.5rem !important;
+    background: #25d366 !important;
+    color: #0b100d !important;
+    border: none !important;
+    font-family: var(--font-btn) !important;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+    transition: all 0.3s ease !important;
+    }
+
+    .cart-footer .btn-primary:hover {
+    background: #f3e5ab !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
+    }
+
+    .cart-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.7);
+    display: none;
+    z-index: 150;
+    }
+
+    .cart-overlay.active { display: block; }
+
+    /* --- 11. PIE DE PÁGINA --- */
+    .footer {
+    padding: 3rem 5%;
+    text-align: center;
+    border-top: 1px solid var(--border-line);
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 2;
+    }
+
+    /* --- 12. RESPONSIVE --- */
+    @media (max-width: 991px) {
+    .hero, .corporate-container, .story-grid { grid-template-columns: 1fr; }
+    .product-grid, .ritual-grid { grid-template-columns: 1fr; }
+    .cart-drawer { width: 100%; right: -100%; }
+    .main-title { font-size: 3.2rem; }
+    .hero-content-container { flex-direction: column; align-items: flex-start; gap: 2rem; }
+    }
+
+    /* --- SELECTOR DE CANTIDADES EN CATÁLOGO Y CARRITO --- */
+    .quantity-selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    background: #080c09;
+    border: 1px solid var(--border-line);
+    border-radius: 4px;
+    padding: 0.3rem;
+    width: 100%;
+    }
+
+    .qty-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    font-weight: 700;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    border-radius: 2px;
+    }
+
+    .qty-btn:hover {
+    background: rgba(212, 175, 55, 0.2);
+    color: #fff;
+    }
+
+    .qty-input {
+    width: 45px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    }
+
+    /* Remueve flechas por defecto en navegadores */
+    /* Quita las flechas predeterminadas en Chrome, Safari, Edge y Opera */
+    .qty-input::-webkit-outer-spin-button,
+    .qty-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+
+    /* Quita las flechas en Firefox y navegadores modernos */
+    .qty-input[type="number"] {
+    -moz-appearance: textfield; /* Para versiones anteriores de Firefox */
+    appearance: textfield;      /* Estándar moderno */
+    }
+    /* ETIQUETA E IMÁGENES DEL RITUAL */
+    .ritual-step .ritual-img-wrapper:hover img {
+    transform: scale(1.05);
+    }
+
+    .ritual-step .ritual-img-wrapper img {
+    filter: brightness(0.9) contrast(1.05);
+    }
+
+    /* EFECTO HOVER EN IMAGEN CORPORATIVA */
+    .corporate-img-wrapper:hover img {
+    transform: scale(1.04);
+    }
+    .corporate-img-wrapper {
+    margin-top: 1.5rem;
+    overflow: hidden;
+    border-radius: 4px;
+    border: 1px solid var(--border-line);
+    flex-grow: 1; /* Permite que el contenedor de la imagen ocupe el espacio vertical de manera proporcional */
+    }
+
+    .corporate-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.9) contrast(1.05);
+    transition: transform 0.5s ease;
+    }
+
+    /* --- ANULAR ESTILOS DE AUTOCOMPLETADO DEL NAVEGADOR (AUTOFILL) --- */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  /* Mantiene la sombra interna oscura ocultando el fondo blanco del navegador */
+    -webkit-box-shadow: 0 0 0 1000px #080c09 inset !important;
+    /* Fuerza el color del texto a blanco brillante */
+    -webkit-text-fill-color: #ffffff !important;
+    /* Transición suave para evitar destellos al cargar datos */
+    transition: background-color 5000s ease-in-out 0s;
+    caret-color: #ffffff;
+    }
+
+    /* --- ENLACES A REDES SOCIALES (FOOTER & SUBTILES) --- */
+    .social-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-link:hover {
+    color: var(--accent-gold);
+    transform: translateY(-1px);
+    }

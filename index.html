@@ -1,0 +1,411 @@
+
+
+        <!-- Tipografías de Lujo Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <!-- Favicon estándar para navegadores web -->
+        <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+
+        <!-- Ícono de alta resolución para dispositivos Apple (iOS) -->
+        <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+
+        <!-- Título optimizado (Máximo 60 caracteres) -->
+        <title>Vidacao — Chocolatería Fina y Cacao Venezolano de Autor</title>
+        
+        <!-- Metadescripción (Máximo 155 caracteres) -->
+        <meta name="description" content="Descubre la alquimia del cacao venezolano en Vidacao. Chocolatería artesanal de autor, barras de origen y detalles corporativos exclusivos con envíos.">
+        
+        <!-- Palabras clave principales -->
+        <meta name="keywords" content="chocolateria artesanal, cacao venezolano, chocolate de autor, barras de cacao, regalos corporativos, Vidacao, vidacao, bombones">
+        
+        <!-- Autor y Robots -->
+        <meta name="author" content="Vidacao">
+        <meta name="robots" content="index, follow">
+
+        <!-- Open Graph (Para que se vea elegante al compartir en Instagram, WhatsApp o Facebook) -->
+        <meta property="og:title" content="Vidacao — Chocolatería Fina y Cacao Venezolano de Autor">
+        <meta property="og:description" content="Experiencia sensorial de autor. Barras de cacao puro y alta chocolatería artesanal venezolana.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://tudominio.com/">
+        <meta property="og:image" content="https://tudominio.com/img/hero-desktop.jpg">
+
+        <!-- Hojas de Estilos y Fuentes -->
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+        <!-- Puntero de Semilla Dorada -->
+        <div id="cursor-seed">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#d4af37">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79 2.89 2.89 6.84 4.51 10.93 4.51.62 0 1.22-.04 1.8-.13-.53 3.17-2.97 5.67-5.94 5.34z"/>
+            </svg>
+        </div>
+
+        <!-- Navegación Superior -->
+        <header class="navbar">
+            <div class="brand-logo">VIDACAO</div>
+            <nav class="nav-links">
+            <a href="#catalogo">Catálogo</a>
+            <a href="#ritual">El Ritual</a>
+            <a href="#corporativo">Corporativo</a>
+            <a href="#historia">Filosofía</a>
+            </nav>
+            <div class="nav-actions">
+            <button class="asmr-toggle" id="asmr-btn" onclick="toggleASMR()" title="Ambiente Sensorial">
+                <span class="asmr-icon">🔊</span> ASMR <span id="asmr-status">OFF</span>
+            </button>
+            <button class="cart-trigger" onclick="toggleCart()">
+                Colección (<span id="cart-count">0</span>)
+            </button>
+            </div>
+        </header>
+
+        <!-- Hero Section (Adaptativo Pantalla Completa) -->
+        <section class="hero reveal">
+            <div class="hero-bg-wrapper">
+            <picture>
+                <source media="(max-width: 991px)" srcset="img/hero-desktop.jpg">
+                <img src="img/hero-desktop.jpg" alt="Vidacao — Cacao Venezolano de Autor" class="hero-full-bg">
+            </picture>
+            <div class="hero-overlay-gradient"></div>
+            </div>
+
+            <div class="hero-content-container">
+            <div class="hero-text-block">
+                <span class="sub-caption" style="color: var(--accent-gold); letter-spacing: 0.15rem; font-size: 0.85rem; text-transform: uppercase;">Cacao 100% Venezolano — Formulaciones de Autor</span>
+                <h1 class="main-title">La Alquimia del Chocolate</h1>
+                <p class="hero-description">
+                Una experiencia sensorial inolvidable creada a partir de la mezcla exacta de licor y manteca de cacao pura, libre de aditivos.
+                </p>
+                <a href="#catalogo" class="btn-corporate" style="display: inline-flex; width: auto !important; padding: 0.9rem 2rem !important; text-decoration: none;">
+                <span>Explorar Catálogo</span>
+                </a>
+            </div>
+
+            <div class="hero-editorial-badge">
+                <span class="badge-number">10 / 2026</span>
+                <span class="badge-label">Chocolatería de Cobertura</span>
+                <small class="text-muted">Formulaciones Propias · Venezuela</small>
+            </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 1: Catálogo de Productos -->
+        <section id="catalogo" class="products-section reveal">
+            <span class="sub-caption" style="color: var(--accent-gold); letter-spacing: 0.15rem; font-size: 0.85rem; text-transform: uppercase;">SELECCIÓN EXCLUSIVA</span>
+            <h2 class="section-title">Catálogo de Colección</h2>
+
+            <div class="catalog-filters">
+            <button class="filter-btn active" onclick="filtrarCatalogo('todos')">Todos</button>
+            <button class="filter-btn" onclick="filtrarCatalogo('barras')">Barras</button>
+            <button class="filter-btn" onclick="filtrarCatalogo('bombones')">Bombones</button>
+            </div>
+
+            <div class="product-grid">
+
+                <!-- Producto 1 -->
+                <article class="product-card" data-category="barras">
+                    <div class="product-img-wrapper">
+                    <img src="img/catalogo1.jpg" loading="lazy" alt="Barra 70%" class="product-img" style="object-fit: cover; border-radius: 2px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/141d18/d4af37?text=Barra+70%25';">
+                    </div>
+                    <div class="product-info">
+                    <h3>Barra de Degustación 70%</h3>
+                    <p class="product-desc">Formulación pura de licor y manteca con notas de cata equilibradas y sedosas.</p>
+                    <span class="product-price">$8.50</span>
+                    
+                    <!-- Selector de Cantidad -->
+                    <div class="quantity-selector">
+                        <button type="button" class="qty-btn" onclick="cambiarCantidadInput('qty-prod-1', -1)">-</button>
+                        <input type="number" id="qty-prod-1" class="qty-input" value="1" min="1" max="99" readonly>
+                        <button type="button" class="qty-btn" onclick="cambiarCantidadInput('qty-prod-1', 1)">+</button>
+                    </div>
+
+                    <button class="btn-add" onclick="agregarAlCarritoConCantidad('Barra de Degustación 70%', 8.50, 'qty-prod-1')">Añadir a la Colección</button>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="product-card" data-category="barras">
+                    <div class="product-img-wrapper">
+                    <img src="img/catalogo1.jpg" loading="lazy" alt="Barra de Sabor Específico" class="product-img" style="object-fit: cover; border-radius: 2px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/141d18/d4af37?text=Barra+Espec%C3%ADfica';">
+                    </div>
+                    <div class="product-info">
+                    <h3>Barra de Sabor Específico</h3>
+                    <p class="product-desc">Combinación artesanal infusionada con ingredientes naturales de la tierra.</p>
+                    <span class="product-price">$10.00</span>
+                    
+                    <!-- Selector de Cantidad -->
+                    <div class="quantity-selector">
+                        <button type="button" class="qty-btn" onclick="cambiarCantidadInput('qty-prod-2', -1)">-</button>
+                        <input type="number" id="qty-prod-2" class="qty-input" value="1" min="1" max="99" readonly>
+                        <button type="button" class="qty-btn" onclick="cambiarCantidadInput('qty-prod-2', 1)">+</button>
+                    </div>
+
+                    <button class="btn-add" onclick="agregarAlCarritoConCantidad('Barra de Sabor Específico', 10.00, 'qty-prod-2')">Añadir a la Colección</button>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="product-card" data-category="bombones">
+                    <div class="product-img-wrapper">
+                    <img src="img/catalogo1.jpg" loading="lazy" alt="Bombones de Autor" class="product-img" style="object-fit: cover; border-radius: 2px;" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/141d18/d4af37?text=Caja+de+Bombones';">
+                    </div>
+                    <div class="product-info">
+                    <h3>Caja de Bombones de Autor</h3>
+                    <p class="product-desc">Piezas meticulosamente creadas para regalar una experiencia inolvidable.</p>
+                    <span class="product-price">$18.00</span>
+                    
+                    <!-- Selector de Cantidad -->
+                    <div class="quantity-selector">
+                        <button type="button" class="qty-btn" onclick="cambiarCantidadInput('qty-prod-3', -1)">-</button>
+                        <input type="number" id="qty-prod-3" class="qty-input" value="1" min="1" max="99" readonly>
+                        <button type="button" class="qty-btn" onclick="cambiarCantidadInput('qty-prod-3', 1)">+</button>
+                    </div>
+
+                    <button class="btn-add" onclick="agregarAlCarritoConCantidad('Caja de Bombones de Autor', 18.00, 'qty-prod-3')">Añadir a la Colección</button>
+                    </div>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN 2: El Ritual de Degustación (Con Video de Fondo) -->
+        <section id="ritual" class="ritual-section reveal">
+            <!-- Video de Fondo en Bucle -->
+            <div class="ritual-video-bg">
+                <video autoplay loop muted playsinline preload="none" class="ritual-video-element">
+                    <source src="video/ritualcata.webm" type="video/webm">
+                    <source src="video/ritualcata.mp4" type="video/mp4">
+                </video>
+                <!-- Capa Oscura + Desenfoque (Blur) -->
+                <div class="ritual-overlay-blur"></div>
+            </div>
+
+            <!-- Contenido Flotante -->
+            <div class="ritual-content-container">
+                <span class="sub-caption" style="color: var(--accent-gold); letter-spacing: 0.15rem; font-size: 0.85rem; text-transform: uppercase;">EXPERIENCIA SENSORIAL</span>
+                <h2 class="section-title">El Ritual de Cata Vidacao</h2>
+                <p class="text-muted" style="margin-bottom: 3.5rem; max-width: 520px; font-size: 1rem !important; color: #d0d7cf !important;">Pautas de autor para develar la riqueza del cacao venezolano en cuatro actos.</p>
+
+                <div class="ritual-grid">
+                    <div class="ritual-step">
+                        <span class="step-num">01</span>
+                        <h3>La Vista</h3>
+                        <p>Observa el brillo satinado y el tono profundo resultado de una perfecta cristalización de la manteca de cacao.</p>
+                    </div>
+
+                    <div class="ritual-step">
+                        <span class="step-num">02</span>
+                        <h3>El Oído</h3>
+                        <p>Parte la barra cerca de tu oído. Escucha el sonido limpio y firme (<em>snap</em>) que atestigua la pureza del atemperado.</p>
+                    </div>
+
+                    <div class="ritual-step">
+                        <span class="step-num">03</span>
+                        <h3>El Olfato</h3>
+                        <p>Inhala las notas volátiles que se liberan al romper la pieza: matices maderosos, florales y frutos secos.</p>
+                    </div>
+
+                    <div class="ritual-step">
+                        <span class="step-num">04</span>
+                        <h3>El Gusto</h3>
+                        <p>Coloca la pieza en el centro de la lengua y deja que se desvanezca suavemente. Siente su permanencia en el paladar.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: Eventos Corporativos -->
+        <section id="corporativo" class="corporate-section reveal">
+            <div class="corporate-container">
+            
+            <!-- Columna Izquierda: Texto + Imagen (1200 x 800) -->
+            <div class="corporate-text">
+            <div>
+                <span class="sub-caption" style="color: var(--accent-gold); letter-spacing: 0.15rem; font-size: 0.85rem; text-transform: uppercase;">B2B & REGALOS DE DISTINCIÓN</span>
+                <h2>Eventos Corporativos y Detallado de Autor</h2>
+                <p>Creamos detalles gastronómicos sofisticados pensados para canalizar una impresión memorable en tus clientes, aliados o eventos institucionales. Diseñamos empaques a la medida con aislamiento térmico y personalización de marca.</p>
+            </div>
+
+            <!-- Imagen adaptativa con la proporción exacta de la columna -->
+            <div class="corporate-img-wrapper">
+                <img loading="lazy"
+                src="img/corporativo.png" 
+                alt="Cajas y detalles corporativos de autor — Vidacao" 
+                onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x800/141d18/d4af37?text=Eventos+Corporativos+(1200x800)';"
+                >
+            </div>
+            </div>
+
+            <!-- Columna Derecha: Formulario B2B -->
+            <form class="corporate-form" id="corporateForm" onsubmit="enviarFormularioCorporativo(event)">
+                <h3>Solicitud de Cotización</h3>
+                
+                <div class="form-group mt-2">
+                <input type="text" id="corp-nombre" required placeholder="Nombre completo">
+                </div>
+                <div class="form-group mt-2">
+                <input type="text" id="corp-empresa" required placeholder="Empresa / Organización">
+                </div>
+                <div class="form-row mt-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <input type="email" id="corp-email" required placeholder="Correo electrónico">
+                <input type="tel" id="corp-telefono" required placeholder="Teléfono de contacto">
+                </div>
+                <div class="form-row mt-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <input type="number" id="corp-cantidad" required min="10" placeholder="Cantidad aprox.">
+                <input type="date" id="corp-fecha" required title="Fecha del evento">
+                </div>
+                <div class="form-group mt-2">
+                <textarea id="corp-mensaje" rows="4" class="input-address" placeholder="Cuéntanos detalles del evento o requerimientos especiales..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-corporate mt-2">
+                <span>Solicitar Propuesta Corporativa</span>
+                <span class="btn-icon">✦</span>
+                </button>
+            </form>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: Historia / Filosofía -->
+        <section id="historia" class="story-section reveal">
+            <div class="story-grid">
+            <div class="story-image-wrapper">
+                <img src="img/taller.png" loading="lazy" alt="Taller Vidacao" class="story-img" style="width:100%; height:480px; object-fit:cover; border-radius:4px; border:1px solid var(--border-line);" onerror="this.onerror=null; this.src='https://via.placeholder.com/1000x1200/141d18/d4af37?text=Taller+Vidacao';">
+            </div>
+            <div class="story-text">
+                <span class="sub-caption" style="color: var(--accent-gold); letter-spacing: 0.15rem; font-size: 0.85rem; text-transform: uppercase;">NUESTRA HISTORIA</span>
+                <h2>Nacido de la búsqueda del sabor ideal</h2>
+                <p>
+                Vidacao se concibe como una firma con fuertes raíces donde la elegancia y la tradición marcan el camino. Un tributo al cacao venezolano transformado con devoción artesanal para crear momentos memorables en el paladar.
+                </p>
+            </div>
+            </div>
+        </section>
+
+        <!-- Carrito Lateral (Drawer) -->
+        <aside id="cart-drawer" class="cart-drawer">
+            <div class="cart-header">
+            <h3>Tu Selección Sensorial</h3>
+            <button class="cart-close" onclick="toggleCart()">✕</button>
+            </div>
+
+            <!-- Contenedor de Productos -->
+            <div id="cart-items" class="cart-items">
+            <!-- Inyección JS -->
+            </div>
+
+            <!-- MOTOR LOGÍSTICO Y DE ENTREGA -->
+            <div class="checkout-delivery">
+            <h4>Método de Entrega</h4>
+            <div class="radio-group">
+                <label class="radio-label">
+                <input type="radio" name="delivery_method" value="pickup" checked onchange="toggleDelivery()"> 
+                Retiro en persona (Ciudad Alianza, Guacara)
+                </label>
+                <label class="radio-label">
+                <input type="radio" name="delivery_method" value="delivery" onchange="toggleDelivery()"> 
+                Delivery (Cotización Aproximada)
+                </label>
+            </div>
+
+            <!-- Opciones de Dirección para Delivery -->
+            <div id="delivery-options" class="location-box" style="display: none;">
+                <p class="text-muted" style="margin-bottom: 0.6rem;">¿Cómo deseas indicar la dirección?</p>
+                <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="location_type" value="manual" checked onchange="toggleLocation()"> 
+                    Escribir dirección
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="location_type" value="gps" onchange="toggleLocation()"> 
+                    Usar GPS
+                </label>
+                </div>
+
+                <!-- Input Manual con Predict -->
+                <div id="manual-location-box" class="mt-2" style="position: relative;">
+                <input 
+                    type="text" 
+                    id="manual-address" 
+                    class="input-address" 
+                    placeholder="Ej: Urb. El Trigal, Calle 2, Valencia..." 
+                    oninput="buscarDireccionPredictiva(this.value)"
+                    autocomplete="off"
+                >
+                <div id="predict-suggestions" class="predict-dropdown" style="display: none;"></div>
+                </div>
+
+                <!-- Botón GPS -->
+                <div id="gps-location-box" class="mt-2" style="display: none;">
+                <button type="button" class="btn-gps" onclick="obtenerUbicacionYCalcularEnvio()">
+                    📍 Obtener mi ubicación actual
+                </button>
+                <small id="gps-status" class="text-muted" style="display:block; text-align:center; margin-top:0.4rem;"></small>
+                </div>
+            </div>
+            </div>
+
+            <!-- MÓDULO DE REGALO -->
+            <div class="cart-gift">
+            <label class="radio-label">
+                <input type="checkbox" id="gift-checkbox" onchange="toggleGiftMessage()"> Es un regalo / Obsequio especial
+            </label>
+            <div id="gift-message-container" class="mt-2" style="display: none;">
+                <textarea id="gift-text" class="input-address" rows="2" placeholder="Escribe tu mensaje personalizado para la tarjeta..."></textarea>
+            </div>
+            </div>
+
+            <!-- PIE DEL CARRITO Y TOTALES -->
+            <div class="cart-footer">
+            <div class="cart-totals-breakdown">
+                <div class="flex-row">
+                <span>Subtotal:</span> <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="flex-row text-muted" id="row-envio" style="display: none;">
+                <span id="envio-label">Envío Estimado:</span> <span id="cart-envio">$0.00</span>
+                </div>
+                <div class="flex-row total-row">
+                <span>Total:</span> <span id="cart-total-price">$0.00</span>
+                </div>
+            </div>
+            <button type="button" class="btn-primary" onclick="enviarAWhatsApp()">
+                Confirmar Pedido vía WhatsApp
+            </button>
+            </div>
+        </aside>
+
+        <div id="cart-overlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+        <footer class="footer">
+            <div class="footer-content" style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <p>© 2026 VIDACAO — Chocolatería de Autor. Hecho con Cacao Venezolano.</p>
+            
+            <!-- Enlaces a Redes Sociales Sutiles -->
+            <div class="social-links" style="display: flex; gap: 1.5rem; justify-content: center; align-items: center;">
+                <a href="https://instagram.com/vidacaoo" target="_blank" rel="noopener" class="social-link" title="Instagram">
+                <span>Instagram</span>
+                </a>
+                <span style="color: var(--border-line);">·</span>
+                <a href="https://wa.me/584243434173" target="_blank" rel="noopener" class="social-link" title="WhatsApp">
+                <span>Atención Directa</span>
+                </a>
+            </div>
+            </div>
+        </footer>
+
+        <script src="script.js" charset="utf-8"></script>
+    </body>
+</html>
