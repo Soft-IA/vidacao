@@ -10,6 +10,8 @@
 
         <!-- Ícono de alta resolución para dispositivos Apple (iOS) -->
         <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+        
+        <link rel="preload" as="image" href="img/hero-desktop.jpg" type="image/jpg">
 
         <!-- Título optimizado (Máximo 60 caracteres) -->
         <title>Vidacao — Chocolatería Fina y Cacao Venezolano de Autor</title>
@@ -37,7 +39,9 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+        <!-- Carga asíncrona de tipografías -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
     </head>
     <body>
 
@@ -72,7 +76,7 @@
             <div class="hero-bg-wrapper">
             <picture>
                 <source media="(max-width: 991px)" srcset="img/hero-desktop.jpg">
-                <img src="img/hero-desktop.jpg" alt="Vidacao — Cacao Venezolano de Autor" class="hero-full-bg">
+                <img src="img/hero-desktop.jpg" alt="Vidacao — Cacao Venezolano de Autor" class="hero-full-bg" fetchpriority="high">
             </picture>
             <div class="hero-overlay-gradient"></div>
             </div>
